@@ -1,0 +1,77 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <title>dajarrin6</title>
+	    <!-- BOOTSTRAP CDN -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	    <!-- FONT AWESOME -->
+	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	</head>
+	<body>
+		<div id="demo">
+		<h2 class="text-center">Foro 2do Parcial</h2>
+		<div class="container align-items-center">
+			<div class="panel panel-primary">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nombre:</th>
+                        <th id="nombre"></th>
+                    </tr>
+                    <tr>
+                        <td>Apellido:</td>
+                        <td id="apellido"></td>
+                    </tr>
+                    <tr>
+                        <td>Cedula:</td>
+                        <td id="cedula"></td>
+                    </tr>
+                    <tr>
+                        <td>Correo:</td>
+                        <td id="correo"></td>
+                    </tr>
+                    <tr>
+                        <td>Usuario Espe:</td>
+                        <td id="usuario"></td>
+                    </tr>
+                    <tr>
+                        <td>Número</td>
+                        <td id="numero"></td>
+                    </tr>
+                    <tr>
+                        <td>Dirección</td>
+                        <td id="direccion"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="align-items-center" ><button type="button" onclick="loadDoc()" >Cargar Datos</button></div>
+            
+		</div>
+		
+		
+		</div>
+		<script>
+				function loadDoc() {
+			  	const xhttp = new XMLHttpRequest();
+			  		xhttp.onreadystatechange = function(){
+			  			if (this.readyState ==4  && this.status==200){
+							datos=this.responseText.split(",");	
+							var j=0;	
+							document.getElementById("cedula").innerHTML = datos[j];
+							document.getElementById("apellido").innerHTML = datos[j+1];
+							document.getElementById("nombre").innerHTML = datos[j+2];
+							document.getElementById("correo").innerHTML = datos[j+3];
+							document.getElementById("usuario").innerHTML = datos[j+4];
+							document.getElementById("numero").innerHTML = datos[j+5];
+							document.getElementById("direccion").innerHTML = datos[j+6];
+						} 
+			  		}
+			  	xhttp.open("GET", "datos.txt", true);
+ 				xhttp.send();
+			}
+		</script>
+	</body>
+</html>
